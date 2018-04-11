@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: telepresence-test
+spec:
+  selector:
+    matchLabels:
+      name: telepresence-test
+  template:
+    metadata:
+      labels:
+        name: telepresence-test
+    spec:
+      initContainers:
+      - name: container-prepare
+        image: busybox
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        command:
+        - sh
+        - -c
+        - |
+          echo "random data" > /data/random
+      containers:
+      - name: container-test
+        image: busybox
+        env:
+        - name: MY_SUPER_SECRET_ENV_VAR
+          value: itsasecret
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        command:
+        - sh
+        - -c
+        - |
+          tail -f /data/random
+      volumes:
+      - name: data
+        emptyDir: {}
