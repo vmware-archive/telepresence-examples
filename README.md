@@ -1,3 +1,10 @@
+# WARNING: Telepresence examples is no longer actively maintained by VMware.
+
+VMware has made the difficult decision to stop driving this project and therefore we will no longer actively respond to issues or pull requests. If you would like to take over maintaining this project independently from VMware, please let us know so we can add a link to your forked project here.
+
+Thank You.
+
+
 # Telepresence examples
 
 This repository houses an example [Deployment](telepresence-test.yaml) to demo
